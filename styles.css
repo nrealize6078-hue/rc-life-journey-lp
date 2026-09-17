@@ -81,3 +81,19 @@ w-b{display:inline}
   .hero-actions>.button{width:100%;min-width:0}
   .cta-gold{min-height:44px;padding:10px 16px;font-size:.875rem;gap:8px}
 }
+
+/* ===== 追記: ミオ先生の画像 ===== */
+/* モノグラムの丸枠をそのまま使い、中身を写真に差し替える */
+.mio-monogram{overflow:hidden;padding:0}
+.mio-monogram>img{width:100%;height:100%;object-fit:cover;object-position:center 22%;display:block}
+
+.mio-portrait{margin:0 0 26px;position:relative}
+.mio-portrait>img{width:100%;height:auto;max-height:340px;object-fit:cover;object-position:center 18%;display:block;border-radius:4px}
+.mio-portrait>figcaption{position:absolute;left:0;right:0;bottom:0;
+  padding:26px 18px 12px;border-radius:0 0 4px 4px;
+  background:linear-gradient(transparent,rgba(10,33,51,.72));
+  color:#fff;font-size:.8125rem;letter-spacing:.06em}
+@media(max-width:800px){
+  .mio-portrait{margin-bottom:20px}
+  .mio-portrait>img{max-height:260px}
+}
