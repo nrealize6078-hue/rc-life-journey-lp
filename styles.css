@@ -73,7 +73,8 @@ w-b{display:inline}
 /* display は触らない。触ると .nav-wide{display:none} を打ち消してヘッダーが崩れる。
    インライン要素の上下paddingは行の高さを変えずに当たり判定だけ広げる。 */
 .wordmark,.back-top,.scroll-label,.site-header nav>a{padding-block:12px}
-.share-icon{min-width:44px;min-height:44px}
+/* 共有アイコンは元の36pxのまま。44pxにすると320pxでヘッダーが折り返す
+   （wordmark129 + LIFE JOURNEY97 + アイコン + gap が余白280を超える） */
 
 @media(max-width:640px){
   .hero-actions{gap:11px}
