@@ -55,7 +55,31 @@ def main():
             frag = lead + ''.join(f'<{TAG}>{s}</{TAG}>' for s in segs) + tail
             node.replace_with(BeautifulSoup(frag, 'html.parser'))
             wrapped += 1
+    # 行頭禁則の後始末:
+    # 「…</strong>」」のように閉じカッコだけが要素の外に残ると、
+    # その1文字が次の行に落ちて行頭に 」 が出る。
+    # 直前の要素ごと w-b で包み、間で折り返らないようにする。
+    CLOSERS = '」』）】'
+    merged = 0
+    for node in list(soup.find_all(string=True)):
+        text = str(node)
+        if not text.strip() or text.strip(CLOSERS) != '':
+            continue
+        prev = node.previous_sibling
+        if prev is None or getattr(prev, 'name', None) is None:
+            continue
+        if prev.name == TAG or node.find_parent(TAG) is not None:
+            continue
+        holder = soup.new_tag(TAG)
+        prev.insert_before(holder)
+        holder.append(prev.extract())
+        holder.append(node.extract())
+        for inner in holder.find_all(TAG):
+            inner.unwrap()
+        merged += 1
+    soup.smooth()
+
     open('index.html', 'w', encoding='utf-8', newline='\n').write(str(soup))
-    print(f'古いタグ{removed}個を剥がし、{wrapped}箇所を文節に分割しました')
+    print(f'古いタグ{removed}個を剥がし、{wrapped}箇所を文節に分割、閉じカッコ{merged}箇所を前に結合しました')
 
 main()
