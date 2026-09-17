@@ -44,3 +44,11 @@
 @media(max-width:820px){.bar-long{display:none}.bar-short{display:inline}}
 @media(max-width:640px){:root{--bar-h:68px}.cta-bar{gap:12px;padding:10px 4%}.cta-bar p{font-size:.75rem}.line-add img{height:32px}}
 @media(prefers-reduced-motion:reduce){.cta-bar{transition:none}}
+
+/* ===== 追記: 文節折り返し（スマホの語中改行を防ぐ） ===== */
+w-b{display:inline}
+@media(max-width:800px){
+  w-b{display:inline-block;overflow-wrap:anywhere}
+  /* 「働き続けたい。」「働きたい。」は横並びだと窮屈なので縦積みに */
+  .trust-outcomes{flex-direction:column;gap:22px}
+}
