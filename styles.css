@@ -70,7 +70,10 @@ w-b{display:inline}
 
 /* タップ領域を44px以上に（画像は36pxのまま、当たり判定だけ広げる） */
 .line-add>a{display:inline-flex;align-items:center;min-height:44px}
-.wordmark,.back-top,.scroll-label,.site-header nav>a,.share-icon{display:inline-flex;align-items:center;min-height:44px}
+/* display は触らない。触ると .nav-wide{display:none} を打ち消してヘッダーが崩れる。
+   インライン要素の上下paddingは行の高さを変えずに当たり判定だけ広げる。 */
+.wordmark,.back-top,.scroll-label,.site-header nav>a{padding-block:12px}
+.share-icon{min-width:44px;min-height:44px}
 
 @media(max-width:640px){
   .hero-actions{gap:11px}
