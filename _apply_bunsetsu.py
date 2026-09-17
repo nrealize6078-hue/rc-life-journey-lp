@@ -15,6 +15,8 @@ SKIP_PARENT = {'a', 'script', 'style', 'button', 'title'}
 SKIP_CLASS = {'bar-long', 'bar-short', 'eyebrow', 'section-kicker',
               'light-kicker', 'hero-note', 'photo-caption', 'scroll-label'}
 JA = re.compile(r'[぀-ヿ一-鿿]')
+# 文節の頭になりうる文字（これで始まるなら独立した語なので結合しない）
+JA_HEAD = re.compile(r'[一-鿿々ァ-ヶ0-9A-Za-z]')
 
 def has_skip_ancestor(node):
     for par in node.parents:
@@ -61,14 +63,25 @@ def main():
     # 直前の要素ごと w-b で包み、間で折り返らないようにする。
     CLOSERS = '」』）】'
     merged = 0
-    for node in list(soup.find_all(string=True)):
-        text = str(node)
-        if not text.strip() or text.strip(CLOSERS) != '':
+    # 裸のテキストと、すでに包まれた w-b の両方を見る
+    targets = list(soup.find_all(string=True)) + soup.find_all(TAG)
+    for node in targets:
+        if getattr(node, 'name', None) == TAG:
+            if node.find_all(TAG):
+                continue
+            text = node.get_text()
+        else:
+            text = str(node)
+        t = text.strip()
+        # 閉じカッコだけ、または「です。」のような3文字以下の続きは前に結合する
+        if not t:
+            continue
+        if t.strip(CLOSERS) != '' and not (len(t) <= 3 and not JA_HEAD.match(t)):
             continue
         prev = node.previous_sibling
         if prev is None or getattr(prev, 'name', None) is None:
             continue
-        if prev.name == TAG or node.find_parent(TAG) is not None:
+        if prev.name == TAG or (node.parent is not None and node.parent.name == TAG):
             continue
         holder = soup.new_tag(TAG)
         prev.insert_before(holder)

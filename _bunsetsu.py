@@ -16,6 +16,25 @@ CLOSERS = '」』）】"\''
 PUNCT = '、。！？'
 FOLLOW_NG = 'のはもがをにへとでやか'  # 切った直後がこの助詞なら切らない（「家族と|の接点へ」を防ぐ）
 
+
+# この語の内側で切ってはいけない（「気になりなが|ら」を防ぐ）
+SPAN_WORDS = ('ながら', 'のに', 'ので', 'だから', 'ですから',
+              'ばかり', 'くらい', 'ぐらい', 'とともに',
+              'こそそ', 'でさえ', 'しかも')
+
+def _inside_word(text, pos):
+    """pos（切る位置）が SPAN_WORDS のどれかの内側に入っていたら True"""
+    for w in SPAN_WORDS:
+        start = 0
+        while True:
+            i = text.find(w, start)
+            if i < 0:
+                break
+            if i < pos < i + len(w):
+                return True
+            start = i + 1
+    return False
+
 def split_bunsetsu(text):
     # 1) 句読点の後で切る（続く閉じ括弧は前に含める）
     parts, buf, i = [], '', 0
@@ -37,6 +56,8 @@ def split_bunsetsu(text):
                 continue
             if p[end:].startswith(NOCUT) or p[end] in FOLLOW_NG:
                 continue
+            if _inside_word(p, end):
+                continue
             segs.append(p[last:end]); last = end
         segs.append(p[last:])
         out += [s for s in segs if s]
@@ -53,7 +74,13 @@ def split_bunsetsu(text):
                 continue
             if seg[end:].startswith(NOCUT) or seg[end] in FOLLOW_NG:
                 continue
+            if _inside_word(seg, end):
+                continue
             if m.group(0) in 'かや':   # 「するか」「AやB」は単独で切ると不自然
+                continue
+            # 文節の頭は漢字・カタカナ・英数・開き括弧。
+            # ひらがなの途中で切ると「一人ひと|りの」「も|らえるとは」のように語を割る。
+            if not re.match(rf'[{KANJI}{KATA}0-9A-Za-z「『（]', seg[end]):
                 continue
             if end - last < 3:        # 細かく刻みすぎない
                 continue
