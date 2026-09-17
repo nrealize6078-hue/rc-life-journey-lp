@@ -37,9 +37,19 @@ def main():
             text = str(node)
             if not JA.search(text) or not text.strip() or has_skip_ancestor(node):
                 continue
-            segs = split_bunsetsu(text.strip())
-            if len(segs) <= 1:
+            # p と strong の両方が TARGET なので、同じテキストが二度包まれるのを防ぐ
+            if node.find_parent(TAG) is not None:
                 continue
+            stripped = text.strip()
+            segs = split_bunsetsu(stripped)
+            if len(segs) <= 1:
+                # 分割できない短い一文は、丸ごと1単位にして語中改行を防ぐ。
+                # （このLPはスマホで <br> を display:none にするため、
+                #   <br> で分けたはずの一文がつながって流れて割れる）
+                # 長い文まで包むと overflow-wrap が禁則を無視して割るので短いものだけ。
+                if not (2 <= len(stripped) <= 14):
+                    continue
+                segs = [stripped]
             lead = text[:len(text) - len(text.lstrip())]
             tail = text[len(text.rstrip()):]
             frag = lead + ''.join(f'<{TAG}>{s}</{TAG}>' for s in segs) + tail
