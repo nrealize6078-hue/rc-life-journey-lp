@@ -174,3 +174,19 @@ body{background:var(--paper);color:var(--ink)}
   .line-card{padding:32px 20px;border-radius:var(--radius-md)}
   .everyday-row>div,.everyday-row>div:first-child{padding:20px 18px}
 }
+
+/* ---------- 狭い画面の調整（320〜400px） ---------- */
+@media(max-width:640px){
+  /* 「REALIZECLUBが届けるもの」のカードは内側の余白を控えめにして、決まった改行を保つ */
+  .axis-statement{padding:32px 12px}
+}
+@media(max-width:400px){
+  /* LINE欄の金ボタンが320pxではみ出さないように */
+  .line-card{padding:28px 16px}
+  .line-card-btn{padding:13px 18px;font-size:.9375rem}
+  .closing-section>*{min-width:0}
+}
+@media(max-width:359px){
+  /* 固定バーは文言を省いてボタンだけに（320pxで2行になるため） */
+  .cta-bar p{display:none}
+}
