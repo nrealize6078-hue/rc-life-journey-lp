@@ -87,7 +87,7 @@ h2 em{color:var(--gold)}
 .btn-light:hover{background:var(--white)}
 .btn-small{padding:10px 18px;font-size:14px;gap:10px}
 .line-ico{width:18px;height:18px;flex:none;color:var(--line-green)}
-.text-link{display:inline-flex;align-items:center;gap:12px;padding-bottom:4px;border-bottom:1px solid var(--line);color:var(--ink);font-size:15px}
+.text-link{display:inline-flex;align-items:center;gap:12px;white-space:nowrap;padding-bottom:4px;border-bottom:1px solid var(--line);color:var(--ink);font-size:15px}
 .text-link:hover{border-color:var(--ink)}
 .text-link-wrap{margin-top:2.4em!important}
 
@@ -271,8 +271,10 @@ h2 em{color:var(--gold)}
 
 @media (max-width:640px){
   :root{--gutter:20px;--header-h:60px}
-  body{font-size:15px;line-height:2}
-  h2{font-size:clamp(22px,7vw,27px);line-height:1.7}
+  /* 本文の1行は最大18字。320px幅でも収まるよう、狭い端末だけ僅かに縮める */
+  body{font-size:clamp(14px,4.6vw,15px);line-height:2}
+  /* 見出しの1行は最大12字。幅に合わせて最大27px */
+  h2{font-size:min(27px,calc((100vw - 40px) / 13.2));line-height:1.7}
 
   .site-header{padding-inline:var(--gutter)}
   .brand-mark{width:30px;height:30px}
@@ -283,7 +285,7 @@ h2 em{color:var(--gold)}
   .hero h1{margin-top:20px;font-size:clamp(30px,9.6vw,38px)}
   .hero-text{padding:48px var(--gutter) 88px}
   .hero-eyebrow{font-size:13px}
-  .hero-lead{margin-top:28px;font-size:15px;line-height:2}
+  .hero-lead{margin-top:28px;font-size:clamp(14px,4.6vw,15px);line-height:2}
   .hero-actions{flex-direction:column;align-items:flex-start;gap:24px;margin-top:40px}
 
   .chapter{margin-bottom:44px;font-size:18px}
@@ -293,7 +295,7 @@ h2 em{color:var(--gold)}
   .why-pull{margin-top:32px;font-size:14px}
   .why-body{padding-top:0}
   .axis{margin-top:120px;padding-block:0}
-  .axis-statement{margin-top:24px;font-size:clamp(17px,5.6vw,22px)}
+  .axis-statement{margin-top:24px;font-size:min(22px,calc((100vw - 40px) / 17))}
   .axis-desc{margin-top:24px;font-size:14px}
 
   .question{padding:120px var(--gutter)}
@@ -303,7 +305,7 @@ h2 em{color:var(--gold)}
   .journey-head{margin-bottom:88px}
   .journey-tag{font-size:15px;margin-top:18px}
   .journey-head h2{margin-top:64px}
-  .journey-intro{margin-top:28px;font-size:15px;line-height:2}
+  .journey-intro{margin-top:28px;font-size:clamp(14px,4.6vw,15px);line-height:2}
   .road{padding-left:32px}
   .road::before{left:4px}
   .step{margin-bottom:80px}
@@ -311,7 +313,7 @@ h2 em{color:var(--gold)}
   .step--shift{max-width:520px;padding-left:0}
   .step-no{font-size:19px}
   .step h3{margin:14px 0 16px;font-size:clamp(20px,6vw,22px)}
-  .step p{font-size:15px;line-height:2}
+  .step p{font-size:clamp(14px,4.6vw,15px);line-height:2}
   .road-photo{margin-bottom:80px}
   .road-photo--wide{margin-left:-32px;margin-right:calc(var(--gutter) * -1)}
   .road-photo--right{width:86%}
@@ -327,7 +329,7 @@ h2 em{color:var(--gold)}
   .mio-line{margin-top:104px;gap:64px}
   .line-shot img{max-width:280px}
   .everyday-flow li{padding:24px 0;font-size:18px}
-  .everyday-summary{margin-top:32px;font-size:15px}
+  .everyday-summary{margin-top:32px;font-size:clamp(14px,4.6vw,15px)}
   .belief{margin-top:120px}
 
   .future{padding-block:104px}
