@@ -125,6 +125,9 @@ br.sp{display:none}
   br.sp{display:inline}
   /* 既存のスマホ用 font-size 指定（詳細度が高いもの）より優先させる */
   [data-fit]{font-size:min(var(--fit-cap),var(--fit))!important}
+  /* セクション見出し（01〜06）は大きさを揃える。一番長い「04 人生支援を、いつもの暮らしの中へ」が
+     320px で1行に収まる値（12.85px×0.97÷3.2）とスクショ時の14px×0.97÷3.75 の小さい方 */
+  .section-kicker{font-size:min(14px,3.621vw)!important}
 }
 
 /* ミオ先生の写真：上端を基準に切り抜く（頭が切れないように） */
