@@ -83,6 +83,9 @@ def main():
             continue
         if prev.name == TAG or (node.parent is not None and node.parent.name == TAG):
             continue
+        # 改行タグは結合相手にしない（文節タグの中に <br> が入ると改行が効かなくなる）
+        if prev.name == 'br':
+            continue
         holder = soup.new_tag(TAG)
         prev.insert_before(holder)
         holder.append(prev.extract())
