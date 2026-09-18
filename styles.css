@@ -138,6 +138,7 @@ h2 em{color:var(--gold)}
 .why{padding-block:140px;background:var(--paper)}
 .why-grid{display:grid;grid-template-columns:5fr 6fr;gap:80px;align-items:start}
 .why-grid--second{margin-top:180px}
+.why-question h2{font-size:clamp(34px,3.3vw,46px)}  /* 左の列（5/11）に1行10字が収まる上限 */
 .why-pull{margin-top:44px;font-size:15px;line-height:2;color:var(--muted)}
 .why-body{padding-top:14px}
 .why-body .key{color:var(--ink);font-weight:500}
@@ -274,7 +275,7 @@ h2 em{color:var(--gold)}
   /* 本文の1行は最大18字。320px幅でも収まるよう、狭い端末だけ僅かに縮める */
   body{font-size:clamp(14px,4.6vw,15px);line-height:2}
   /* 見出しの1行は最大12字。幅に合わせて最大27px */
-  h2{font-size:min(27px,calc((100vw - 40px) / 13.2));line-height:1.7}
+  h2,.why-question h2{font-size:min(27px,calc((100vw - 40px) / 13.2));line-height:1.7}
 
   .site-header{padding-inline:var(--gutter)}
   .brand-mark{width:30px;height:30px}
