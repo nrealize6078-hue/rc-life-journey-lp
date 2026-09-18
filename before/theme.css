@@ -1,0 +1,192 @@
+/* =====================================================================
+   theme.css — 2026年9月18日 デザイン刷新（内容は変えず、見せ方だけを変える）
+   styles.css の後に読み込み、上書きする。
+   方針
+   - 色：紺と金はそのまま。明るい面は温かみのあるアイボリーに
+   - 形：写真・カード・ボタンを角丸に。影はごく薄く（写真や文字を黒く沈ませない）
+   - 文章の前の装飾線・矢印・写真に重ねる影は使わない
+   ===================================================================== */
+
+:root{
+  --ivory:#f7f4ee;
+  --paper:#fbfaf7;
+  --line:#e7e1d6;
+  --ink:#1c2b36;
+  --muted:#5e6a73;
+  --radius-lg:28px;
+  --radius-md:20px;
+  --radius-sm:14px;
+  --soft-shadow:0 18px 50px rgba(16,43,64,.08);
+}
+body{background:var(--paper);color:var(--ink)}
+
+/* ---------- ヘッダー：半透明の白＋ぼかし ---------- */
+.site-header{background:rgba(251,250,247,.86);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(16,43,64,.06)}
+.share-icon{border-color:var(--line);background:#fff}
+
+/* ---------- ボタン：角丸（ピル型） ---------- */
+.button{border-radius:999px;transition:background .2s,transform .2s,box-shadow .2s}
+.button:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(16,43,64,.14)}
+.cta-gold{border-radius:999px}
+.button-navy{border-radius:999px}
+
+/* ---------- セクション見出し（01〜06）：線なし、金の数字＋字間広め ---------- */
+.section-kicker{letter-spacing:.16em;color:var(--muted);gap:14px}
+.section-kicker>span{font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:1.05rem;
+  color:var(--gold);letter-spacing:.04em;min-width:0}
+.light-kicker{color:#c8d3db}
+.light-kicker>span{color:var(--gold-light)}
+
+/* ---------- 明るい面の背景 ---------- */
+.used-section,.belief-section{background:var(--ivory)}
+.purpose,.mio-section{background:var(--paper)}
+
+/* ---------- 01 私たちが向き合うこと ---------- */
+.small-pull{color:var(--muted)}
+.axis-statement{background:var(--ivory);border:0;border-radius:var(--radius-lg);padding:56px 40px}
+.axis-statement .eyebrow{letter-spacing:.2em}
+
+/* ---------- 02 ---------- */
+/* 見出しの金の下線は、線ではなく金の文字色で強調する */
+.underline-gold{border:0;background:none;color:var(--gold);padding:0;text-decoration:none}
+.text-link{border-bottom-color:rgba(163,121,61,.5)}
+
+/* ---------- 03 LIFE JOURNEY ---------- */
+.journey-section{background:linear-gradient(180deg,#0e2638 0%,#102b40 100%)}
+.origin-question{border:1px solid rgba(220,195,152,.35);background:rgba(255,255,255,.04);border-radius:var(--radius-lg)}
+/* 縦線でつないだ年表 → カード */
+.journey-list{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;border:0}
+.journey-step{display:block;padding:32px 28px;border:1px solid rgba(255,255,255,.08);border-radius:var(--radius-md);
+  background:rgba(255,255,255,.04)}
+.journey-step+.journey-step{border-top:1px solid rgba(255,255,255,.08)}
+.step-marker{position:static;height:auto;display:block;margin-bottom:18px}  /* 年表時代の height:100% を打ち消す */
+.step-marker:after,.step-marker::after{display:none!important}
+.step-marker>span{border-color:rgba(220,195,152,.55);color:var(--gold-light)}
+.step-heading{margin-bottom:14px}
+.journey-step>p{color:#c5d2dc}
+/* 伴走カード：正面のミオ先生を大きめに */
+.journey-companion{align-items:center;gap:36px;padding:28px;border-radius:var(--radius-lg);
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08)}
+.companion-photo{flex:none;width:220px;height:220px;border-radius:var(--radius-md);overflow:hidden}
+.companion-photo>img{width:100%;height:100%;object-fit:cover;object-position:center 20%}
+.journey-companion p{font-size:1.1rem;line-height:2}
+
+/* ---------- 04 ミオ先生 ---------- */
+@media(min-width:801px){
+  /* 右の列（写真とLINE画面）を広げて、ミオ先生を大きめに */
+  .mio-grid{grid-template-columns:1fr 1fr;gap:64px}
+  .conversation-wrap{max-width:none}
+}
+.mio-portrait>img{max-height:none;aspect-ratio:5/4;object-position:center 30%;border-radius:var(--radius-lg)}
+.mio-portrait>figcaption{border-radius:0 0 var(--radius-lg) var(--radius-lg)}
+.conversation{border:0;border-radius:var(--radius-lg);background:#fff;box-shadow:var(--soft-shadow);overflow:hidden}
+.conversation-header{border-bottom:1px solid var(--line);background:#fff}
+.conversation-header .mio-monogram{width:52px;height:52px}
+.conversation-body{background:var(--ivory)}
+/* 実際のLINE画面：スマホの枠に入れる */
+.line-shot{margin:14px auto 6px;width:min(100%,300px);border-radius:36px;overflow:hidden;
+  border:10px solid var(--navy);background:var(--navy);box-shadow:0 24px 60px rgba(16,43,64,.18)}
+.line-shot>img{display:block;width:100%;height:auto}
+.mio-principle p{font-size:1.4rem}
+/* 日常の3つの場面：線ではなくカード */
+.everyday-row{border:0;gap:16px;padding:0}
+.everyday-row>div,.everyday-row>div:first-child{border:0!important;background:var(--ivory);border-radius:var(--radius-md);padding:26px 24px}
+
+/* ---------- 05 ---------- */
+
+/* ---------- 06 ---------- */
+.trust-section{background:linear-gradient(180deg,#102b40 0%,#0e2638 100%)}
+.trust-bottom{border-top:0}
+.trust-outcomes>p{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);
+  border-radius:var(--radius-md);padding:18px 24px}
+
+/* ---------- クロージング ---------- */
+.closing-section{background:var(--paper)}
+.closing-photo{padding:28px 0 28px 28px}
+.closing-photo>img{border-radius:var(--radius-lg)}
+/* LINE欄：LINEの緑をやめ、紺のカード＋金のボタン */
+.line-card{background:var(--navy);color:#fff;border:0;border-top:0;border-radius:var(--radius-lg);
+  padding:40px 32px;box-shadow:var(--soft-shadow)}
+.line-card-h{color:#fff}
+.line-card-t{color:#c8d3db}
+.line-card-btn{min-height:52px;padding:14px 28px;font-size:1rem}
+.closing-content .button-navy{background:transparent;color:var(--navy);border:1px solid var(--navy)}
+.closing-content .button-navy:hover{background:var(--navy);color:#fff}
+
+/* ---------- フッター ---------- */
+.site-footer{background:transparent}
+
+/* ---------- 固定ボトムバー ---------- */
+.cta-bar{background:rgba(16,43,64,.9);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-top:0}
+
+/* =====================================================================
+   ファーストビュー
+   ===================================================================== */
+/* 以前の「写真に影」「文字の後ろの帯」はすべてやめる */
+.hero-shade{display:none}
+.hero .ln::before{content:none!important}
+.hero-eyebrow,.hero-note{background:none!important;padding:0!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+.hero-eyebrow{display:flex!important}
+.hero-note{display:block!important}
+/* 改行はどの幅でもスマホと同じ（見出し4行・本文4行） */
+.hero-mobile-break{display:block!important}
+.hero-copy br.sp{display:inline!important}
+.hero .ln{display:inline;line-height:inherit}
+
+/* PC：紺地の左に文字、右に角丸の写真 */
+@media(min-width:1025px){
+  .hero{display:grid;grid-template-columns:1fr 1fr;min-height:0;align-items:stretch}
+  .hero-image{position:relative;inset:auto;z-index:auto;grid-column:2;grid-row:1;
+    margin:28px 28px 28px 0;border-radius:var(--radius-lg);overflow:hidden;min-height:620px}
+  .hero-content{grid-column:1;grid-row:1;width:auto;margin:0;align-self:center;box-sizing:border-box;
+    padding:72px 56px 72px max(56px,calc((100vw - 1200px)/2))}
+  .photo-caption{right:56px;bottom:56px;background:rgba(16,43,64,.55);text-shadow:none;border-radius:999px;
+    padding:.45em 1.1em;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+}
+/* タブレット・スマホ：角丸の写真が上、文字が下（写真の上に文字を載せない） */
+@media(max-width:1024px){
+  .hero{display:flex;flex-direction:column;min-height:0}
+  .hero-image{position:relative;inset:auto;z-index:auto;aspect-ratio:3/2;margin:16px 16px 0;
+    border-radius:var(--radius-md);overflow:hidden}
+  .hero-image img{object-position:62% center}
+  .hero-content{padding-top:40px;padding-bottom:56px}
+  .photo-caption{display:none}
+}
+
+/* =====================================================================
+   スマホ・タブレットの調整
+   ===================================================================== */
+@media(max-width:1024px){
+  .journey-list{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:800px){
+  .closing-photo{padding:16px 16px 0}
+  .closing-photo>img{border-radius:var(--radius-md)}
+}
+@media(max-width:640px){
+  .journey-list{grid-template-columns:1fr;gap:14px}
+  .journey-step{padding:24px 20px}
+  .axis-statement{padding:36px 22px;border-radius:var(--radius-md)}
+  .journey-companion{flex-direction:column;text-align:center;gap:20px;padding:24px 20px}
+  .companion-photo{width:180px;height:180px}
+  .journey-companion p{flex-basis:auto!important;min-width:0}
+  .line-card{padding:32px 20px;border-radius:var(--radius-md)}
+  .everyday-row>div,.everyday-row>div:first-child{padding:20px 18px}
+}
+
+/* ---------- 狭い画面の調整（320〜400px） ---------- */
+@media(max-width:640px){
+  /* 「REALIZECLUBが届けるもの」のカードは内側の余白を控えめにして、決まった改行を保つ */
+  .axis-statement{padding:32px 12px}
+}
+@media(max-width:400px){
+  /* LINE欄の金ボタンが320pxではみ出さないように */
+  .line-card{padding:28px 16px}
+  .line-card-btn{padding:13px 18px;font-size:.9375rem}
+  .closing-section>*{min-width:0}
+}
+@media(max-width:359px){
+  /* 固定バーは文言を省いてボタンだけに（320pxで2行になるため） */
+  .cta-bar p{display:none}
+}
