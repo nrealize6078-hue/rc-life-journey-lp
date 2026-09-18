@@ -14,7 +14,7 @@ TARGET = 'h1,h2,h3,h4,p,summary,strong,b,em,li,dd,dt,figcaption'
 SKIP_PARENT = {'a', 'script', 'style', 'button', 'title'}
 SKIP_CLASS = {'bar-long', 'bar-short', 'eyebrow', 'section-kicker',
               'light-kicker', 'hero-note', 'photo-caption', 'scroll-label'}
-JA = re.compile(r'[぀-ヿ一-鿿]')
+JA = re.compile(r'[　-〿぀-ヿ一-鿿]')
 # 文節の頭になりうる文字（これで始まるなら独立した語なので結合しない）
 JA_HEAD = re.compile(r'[一-鿿々ァ-ヶ0-9A-Za-z]')
 
