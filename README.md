@@ -29,25 +29,14 @@
 - `[hidden]{display:none!important}` は消さないこと。LINE公式ボタンの代替表示がこれに依存する
 - 元は chatgpt.site 公開版（2026年9月17日取得）。以後の編集はこのリポジトリが正
 
-## スマホの改行（重要）
+## 2026年9月18日 全面刷新（指示書「人生を一冊の本のように」）
 
-スマホ（520px以下）の改行は、**2026年9月18日に社長がiPhone（375幅）で確認したスクショどおりに固定**している。
-どの機種でも同じ位置で改行される。
+- CSS は `styles.css` 1ファイル（Base→Typography→Layout→Header→Hero→Why→Journey→Mio→Future→Closing→Footer→Responsive）。`theme.css`・文節タグ w-b・data-fit は廃止
+- 角丸0〜2px（LINE画面のみ12px）、影・グラデーション・すりガラス・カード・ピル型は使わない
+- Webフォント: Noto Serif JP / Noto Sans JP / Cormorant Garamond（Google Fonts）
+- 改行は HTML の `<br>` で決める。**1行は本文18字・見出し12字以内**にすれば 320px でも崩れない
+- LIFE JOURNEY の写真は社内の写真素材（`\192.168.0.100\共有\【白石】\📷写真素材`）から:
+  `journey-remember.webp`=LMP LP素材(3) / `journey-design.webp`=5月16日11_52_43 / `journey-share.webp`=道.jpg（✦マークは切り落とし）
+- LINE: `https://lin.ee/8jf4Da7`（ヒーローの控えめなリンク / 最後の相談 / 固定バー）
+- 旧版は `_index.before-v3.html` 等（公開対象外）
 
-- `<br class="sp">` … スマホだけで効く改行（65箇所）。PC・タブレットでは消える
-- `data-fit` と `style="--fit:…vw;--fit-cap:…px"` … その段落の各行が1行に収まる文字サイズ。
-  画面幅に比例するので、機種が変わっても改行位置が変わらない（53ブロック）
-- セクション見出し（01〜06）は `.section-kicker` に共通の縮小率
-
-**文章を書き換えたら、その段落の `br.sp` と `--fit` を算出し直すこと。**
-文字数が変わると、1行に収まらなくなって余計な折り返しが出る。
-算出は「320px幅で全行が1行に収まる最大サイズ×0.97÷3.2」と「375px時の文字サイズ×0.97÷3.75」の小さい方。
-検証は 320〜520px の14幅で、全ブロックの行がスクショと一致するかを見る。
-
-## デザイン刷新（2026年9月18日）
-
-- 見せ方の変更は **`theme.css`**（`styles.css` の後に読み込み）に集約。元に戻すときは読み込みを外す
-- 画像: `mio-welcome.webp`（手を差し伸べるミオ先生・大）/ `mio-office.webp`（正面・伴走カード）/
-  `mio-avatar.webp`（丸アイコン）/ `line-mio.webp`（実際のLINE画面。iPhoneのステータスバーは切り落とし）
-- 原本: Downloads の「ChatGPT Image 2026年9月17日 20_18_59.png」「ChatGPT Image 2026年9月18日 15_08_57.png」「S__16654404.jpg」
-- ローカル確認: ヘッドレスChromeで `index.html`（PC）、`_sp_frame.html?w=390&h=844`（スマホ幅）を撮影
