@@ -262,6 +262,21 @@ h2 em{color:var(--gold)}
 .cta-bar p{font-size:13px;letter-spacing:.06em;color:var(--muted)}
 
 /* ---------------------------------------------------------------------
+   REALIZE CLUB（法人向け説明LP）への入口 — 各章の最後に静かに置く
+   --------------------------------------------------------------------- */
+.rc-more-row{margin-top:48px;text-align:center;list-style:none}
+.rc-more-row--left{text-align:left}
+.rc-more{display:inline-flex;align-items:center;gap:12px;padding-bottom:4px;border-bottom:1px solid currentColor;
+  color:var(--ink);font-size:15px;letter-spacing:.06em;line-height:1.6}
+.rc-more .arw{transition:transform .25s}
+.rc-more:hover .arw{transform:translateX(3px)}
+.hero .rc-more-row{margin-top:28px}
+.hero .rc-more{color:var(--muted);font-size:14px}
+.axis .rc-more-row{margin-top:40px}
+.road .rc-more-row{margin:56px 0 0}
+.rc-more--small{font-size:13px;color:var(--muted)}
+
+/* ---------------------------------------------------------------------
    Responsive
    --------------------------------------------------------------------- */
 @media (max-width:1024px){
@@ -355,6 +370,8 @@ h2 em{color:var(--gold)}
   .site-footer{padding-block:40px calc(40px + var(--bar-h))}
   .footer-inner{flex-wrap:wrap;gap:12px 20px}
   .back-top{width:100%;margin-left:0}
+  .rc-more-row{margin-top:36px}
+  .rc-more{font-size:14px}
 }
 
 @media (max-width:420px){
