@@ -123,7 +123,8 @@ w-b{display:inline}
 br.sp{display:none}
 @media(max-width:520px){
   br.sp{display:inline}
-  [data-fit]{font-size:min(var(--fit-cap),var(--fit))}
+  /* 既存のスマホ用 font-size 指定（詳細度が高いもの）より優先させる */
+  [data-fit]{font-size:min(var(--fit-cap),var(--fit))!important}
 }
 
 /* ミオ先生の写真：上端を基準に切り抜く（頭が切れないように） */
