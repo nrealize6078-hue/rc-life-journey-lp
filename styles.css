@@ -170,11 +170,11 @@ br.sp{display:none}
 
 /* ===== 追記: Bマーク（The 100-Year Life）をロゴ文字の左に ===== */
 /* 緑のロゴなので白い背景（ヘッダー・フッター）にだけ置く。紺の上では沈む */
-.wordmark{display:inline-flex;align-items:center;gap:10px}
-.brand-mark{width:40px;height:40px;flex:none}
+/* gap だと「REALIZE」と「CLUB」の間まで空くので、マークの右余白で間隔をとる */
+.wordmark{display:inline-flex;align-items:center}
+.brand-mark{width:40px;height:40px;flex:none;margin-right:10px}
 @media(max-width:520px){
-  .wordmark{gap:7px}
-  .brand-mark{width:32px;height:32px}
+  .brand-mark{width:32px;height:32px;margin-right:7px}
 }
 /* Bマークを足すと 374px 以下（Android 360 など）でヘッダーが2段になる。
    ファーストビューに「LIFE JOURNEYを知る」ボタンがあるので、狭い幅ではヘッダーのリンクを省く */
