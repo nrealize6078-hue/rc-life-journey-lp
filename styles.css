@@ -105,3 +105,37 @@ w-b{display:inline}
 .small-pull{border-left:0;padding-left:0}
 /* 矢印を外したので、ボタンの文字は中央に */
 .hero-actions>.button-gold{justify-content:center}
+
+/* ===== 追記: 共有の通知が固定ボトムバーと重なる問題 ===== */
+/* 通知もバーも画面下・z-index:30 で、後から描かれるバーが通知を覆っていた。
+   通知は常にバーの上に出し、重なり順もバーより手前にする。 */
+.toast{z-index:40;bottom:calc(var(--bar-h) + 16px)}
+
+/* ===== 追記: どのスマホでも「決まった改行」どおりに改行させる ===== */
+/* (1) HTMLに書いてある改行を、スマホでも消さずに効かせる */
+.everyday-row p br{display:inline}
+.everyday-summary br.desktop-only{display:inline}
+
+/* (2) <br> で区切った1行が、画面幅によってさらに折り返さないようにする。
+   文字サイズを画面幅に比例させる（Nvw）ので、どの機種でも同じ位置で改行される。
+   N は 320px で1行に収まる大きさを二分探索で実測し、3%の余裕を引いた値。
+   min() の左は元の最大サイズ。これより大きくはしない。
+   ※ 会話の吹き出し・「知識を学ぶ前に…」・「そんな小さな行動を…」・
+     「REALIZECLUBは、…」は、収めると12px未満になり読めないので対象外。 */
+@media(max-width:520px){
+  .hero-copy{font-size:min(16px,3.64vw)}  /* 人生100年時代の安心を、… */
+  #purpose-title{font-size:min(26.44px,6.44vw)}  /* 福利厚生サービスを… */
+  #purpose .body-copy > p:first-child{font-size:min(16px,4.36vw)}  /* 離職を減らしたい。… */
+  .axis-statement > p.serif{font-size:min(23.22px,5.27vw)}  /* 学びが、自分で選ぶ力になる。… */
+  .axis-description{font-size:min(15px,4.39vw)}  /* 判断軸を育てる人生教育を… */
+  #used-title{font-size:min(29.24px,7.72vw)}  /* どれほど立派でも、… */
+  #journey-title{font-size:min(28px,6.43vw)}  /* その旅は、あなたの原点から始まる。 */
+  .origin-question > p{font-size:min(26.4px,6.83vw)}  /* どんな人生を、送りたかったですか。 */
+  #mio-title{font-size:min(23.22px,5.94vw)}  /* ふと気になった、その時に。… */
+  #belief-title{font-size:min(25.8px,6.43vw)}  /* 社員一人ひとりの幸せを、… */
+  #trust-title{font-size:min(32.68px,7.87vw)}  /* 「この会社は、… */
+  .trust-bottom > p{font-size:min(16px,3.55vw)}  /* 会社が、社員と家族へ… */
+  #closing-title{font-size:min(29.24px,7.72vw)}  /* 今、この時代に必要な… */
+  .closing-content > p:nth-of-type(2){font-size:min(16px,3.92vw)}  /* 理念を掲げるだけで… */
+  .closing-content > p:nth-of-type(3){font-size:min(16px,4.27vw)}  /* 社員が自分の未来に関心を持ち、… */
+}
