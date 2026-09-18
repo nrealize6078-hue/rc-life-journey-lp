@@ -173,4 +173,9 @@ br.sp{display:none}
   .wordmark{gap:7px}
   .brand-mark{width:32px;height:32px}
 }
+/* Bマークを足すと 374px 以下（Android 360 など）でヘッダーが2段になる。
+   ファーストビューに「LIFE JOURNEYを知る」ボタンがあるので、狭い幅ではヘッダーのリンクを省く */
+@media(max-width:374px){
+  .site-header nav>a[href="#journey"]{display:none}
+}
 
