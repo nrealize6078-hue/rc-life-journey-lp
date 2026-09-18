@@ -138,7 +138,7 @@ br.sp{display:none}
    写真が暗くなるのでやめる。写真と文字の場所を分ける。 */
 .hero-shade{display:none}
 /* 写真上のキャプションも影ではなく紺のラベル帯で読ませる */
-.photo-caption{text-shadow:none;background:var(--navy);padding:.35em .8em}
+.photo-caption{text-shadow:none;background:rgba(16,43,64,.6);padding:.35em .8em;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
 
 /* PC: 左半分＝紺の無地に文字、右半分＝写真 */
 @media(min-width:1025px){
@@ -152,17 +152,20 @@ br.sp{display:none}
    文字の後ろにだけ紺の帯を敷いて読ませる（帯の外は写真が元の明るさで見える）。 */
 @media(max-width:1024px){
   .hero-image{inset:0}
+  /* 帯の色：紺60%＋うしろの写真を軽くぼかす（すりガラス風）。写真が透けつつ白文字が読める */
+  .hero{--band:rgba(16,43,64,.6)}
   /* 小見出し・注記はラベル状の帯 */
-  .hero-eyebrow,.hero-note{display:inline-block;background:var(--navy);padding:.3em .6em}
+  .hero-eyebrow,.hero-note{display:inline-block;background:var(--band);padding:.3em .6em;
+    -webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
   .hero-eyebrow{display:inline-flex}
-  /* 見出し・本文は文節ごとの帯。
-     帯を文節そのものの背景にすると、後ろの文節の帯（左右に伸ばした分）が前の文節の
-     最後の文字（「の」「に」など）の上に描かれてしまう。
-     そこで帯は ::before で z-index:-1 に置き、すべての文字より奥に描く
-     （.hero は isolation:isolate、写真は z-index:-3 なので、写真の上・文字の下に入る）。 */
-  .hero h1 w-b,.hero-copy w-b{position:relative;line-height:1.3}
-  .hero h1 w-b::before,.hero-copy w-b::before{content:"";position:absolute;
-    inset:0 -.22em;background:var(--navy);z-index:-1}
+  /* 見出し・本文は「1行に1本」の帯（.ln は行ごとの span）。
+     文節ごとに帯を敷くと、半透明では重なった所だけ濃くなり縞になるため。
+     帯は ::before で文字より奥に置く（文字の上に帯がかからない） */
+  .hero .ln{display:inline-block;position:relative;line-height:1.3}
+  .hero .ln::before{content:"";position:absolute;inset:0 -.22em;z-index:-1;background:var(--band);
+    -webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+  /* タブレットでも本文をスマホと同じ4行にして、1行に帯が2本並ばないようにする */
+  .hero-copy br.sp{display:inline}
 }
 
 /* ===== 追記: Bマーク（The 100-Year Life）をロゴ文字の左に ===== */
