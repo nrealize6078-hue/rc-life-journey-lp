@@ -155,8 +155,22 @@ br.sp{display:none}
   /* 小見出し・注記はラベル状の帯 */
   .hero-eyebrow,.hero-note{display:inline-block;background:var(--navy);padding:.3em .6em}
   .hero-eyebrow{display:inline-flex}
-  /* 見出し・本文は文節ごとの帯。左右の余白は box-shadow で足す（同じ色なので重なっても継ぎ目が出ない） */
-  .hero h1 w-b,.hero-copy w-b{background:var(--navy);line-height:1.3;
-    box-shadow:.22em 0 0 var(--navy),-.22em 0 0 var(--navy)}
+  /* 見出し・本文は文節ごとの帯。
+     帯を文節そのものの背景にすると、後ろの文節の帯（左右に伸ばした分）が前の文節の
+     最後の文字（「の」「に」など）の上に描かれてしまう。
+     そこで帯は ::before で z-index:-1 に置き、すべての文字より奥に描く
+     （.hero は isolation:isolate、写真は z-index:-3 なので、写真の上・文字の下に入る）。 */
+  .hero h1 w-b,.hero-copy w-b{position:relative;line-height:1.3}
+  .hero h1 w-b::before,.hero-copy w-b::before{content:"";position:absolute;
+    inset:0 -.22em;background:var(--navy);z-index:-1}
+}
+
+/* ===== 追記: Bマーク（The 100-Year Life）をロゴ文字の左に ===== */
+/* 緑のロゴなので白い背景（ヘッダー・フッター）にだけ置く。紺の上では沈む */
+.wordmark{display:inline-flex;align-items:center;gap:10px}
+.brand-mark{width:40px;height:40px;flex:none}
+@media(max-width:520px){
+  .wordmark{gap:7px}
+  .brand-mark{width:32px;height:32px}
 }
 
