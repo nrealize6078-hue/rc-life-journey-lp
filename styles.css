@@ -97,3 +97,11 @@ w-b{display:inline}
   .mio-portrait{margin-bottom:20px}
   .mio-portrait>img{max-height:260px}
 }
+
+/* ===== 追記: 文章の前に付く装飾線・矢印を撤去 ===== */
+/* 01/02… の数字の下線 */
+.section-kicker>span{border-bottom:0;padding-bottom:0}
+/* 「そのサービスは、社員の…」の前の縦線 */
+.small-pull{border-left:0;padding-left:0}
+/* 矢印を外したので、ボタンの文字は中央に */
+.hero-actions>.button-gold{justify-content:center}
