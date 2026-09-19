@@ -282,8 +282,8 @@ h2 em{color:var(--gold)}
 @media (max-width:1024px){
   :root{--gutter:32px}
   .hero{grid-template-columns:1fr;height:auto}
-  .hero-photo{order:-1;aspect-ratio:4/3}
-  .hero-text{padding:56px var(--gutter) 96px}
+  .hero-text{order:1;padding:56px var(--gutter) 96px}
+  .hero-photo{order:2;aspect-ratio:4/3}
   .why-grid,.belief,.mio-intro{grid-template-columns:1fr;gap:56px}
   .mio-line{grid-template-columns:1fr;gap:72px;max-width:620px}
   .step--shift{max-width:calc(520px + 12%);padding-left:12%}
