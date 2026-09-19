@@ -383,3 +383,32 @@ h2 em{color:var(--gold)}
   .js .reveal{opacity:1;transform:none;transition:none}
   .btn .arw,.cta-bar{transition:none}
 }
+
+.hero-photo--mobile{
+  display:none;
+}
+
+@media (max-width:1024px){
+
+  .hero-photo--desktop{
+    display:none;
+  }
+
+  .hero-photo--mobile{
+    display:block;
+    margin-top:32px;
+    aspect-ratio:4/3;
+    overflow:hidden;
+  }
+
+  .hero-photo--mobile img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:62% center;
+  }
+
+  .hero-lead{
+    margin-top:32px;
+  }
+}
