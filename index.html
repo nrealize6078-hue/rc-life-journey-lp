@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@400;500&display=swap">
-<link rel="stylesheet" href="styles.css?v=37">
+<link rel="stylesheet" href="styles.css?v=38">
 </head>
 <body>
 <a class="skip-link" href="#main">本文へ進む</a>
@@ -39,9 +39,6 @@
     <div class="hero-text">
       <p class="hero-eyebrow">社員の人生に、判断軸を。</p>
       <h1 id="hero-title">社員が、<br>自分の未来に<br><em>希望を描ける</em><br>会社へ。</h1>
-      <figure class="hero-photo hero-photo--mobile">
-        <img src="assets/family.webp" alt="海辺の道を、子どもと手をつないで歩く家族" width="1536" height="1024">
-      </figure>
       <p class="hero-lead">人生100年時代を、<br>自分らしく生きるための<br>人生支援を。</p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="#journey">LIFE JOURNEYを見る<span class="arw" aria-hidden="true">→</span></a>
@@ -106,7 +103,7 @@
       <div class="journey-head reveal">
         <p class="journey-brand" aria-hidden="true">Life Journey</p>
         <p class="journey-tag">自分の人生に、<br>興味を持つ旅。</p>
-        <h2 id="journey-title">その旅は、<br>人生を整えることから始まる。</h2>
+        <h2 id="journey-title">その旅は、<br><span class="keep-phrase">人生を整えることから</span><br><span class="keep-phrase">始まる。</span></h2>
         <p class="journey-intro">知識を学ぶ前に、まず、<br>自分の人生に心が動くこと。<br>気づきと共感が次の一歩に<br>つながるよう、<br>ストーリーを設計しています。</p>
       </div>
 
@@ -183,7 +180,9 @@
       <div class="mio-line">
         <figure class="line-shot reveal">
           <figcaption class="line-label">たとえば、いつものLINEから</figcaption>
-          <img src="assets/line-life-shift.jpg" alt="ミオ先生からLINEで届く、時代の移り変わりを知るLIFE SHIFTの実際の画面" width="750" height="1334" loading="lazy">
+          <div class="line-phone">
+            <img src="assets/line-life-shift.jpg" alt="ミオ先生からLINEで届く、時代の移り変わりを知るLIFE SHIFTの実際の画面" width="750" height="1334" loading="lazy">
+          </div>
           <p class="line-reflection">届いたテーマを見て、返信しながら学びを進めます。</p>
           <p class="line-note">※ 実際のLINE配信画面です。</p>
         </figure>
@@ -228,9 +227,6 @@
 
   <!-- ============ CLOSING ============ -->
   <section class="closing" aria-labelledby="closing-title">
-    <figure class="closing-photo">
-      <img src="assets/family.webp" alt="大切な家族と一緒に、未来へ歩んでいく" width="1536" height="1024" loading="lazy">
-    </figure>
     <div class="wrap closing-text">
       <p class="closing-eyebrow reveal">REALIZECLUB</p>
       <h2 id="closing-title" class="reveal">今、この時代に必要な<br>人生支援を、<br><em>毎日の暮らしの中へ。</em></h2>
@@ -272,29 +268,3 @@
 <script src="script.js?v=3" defer></script>
 </body>
 </html>
-
-<h1 id="hero-title">
-  社員が、<br>
-  自分の未来に<br>
-  <em>希望を描ける</em><br>
-  会社へ。
-</h1>
-
-<figure class="hero-photo hero-photo--mobile">
-  <img
-    src="assets/family.webp"
-    alt="海辺の道を、子どもと手をつないで歩く家族"
-    width="1536"
-    height="1024"
-  >
-</figure>
-
-<p class="hero-lead">
-  人生100年時代を、<br>
-  自分らしく生きるための<br>
-  人生支援を。
-</p>
-
-<figure class="hero-photo hero-photo--desktop">
-  ...
-</figure>

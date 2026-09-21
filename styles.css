@@ -168,6 +168,7 @@ h2 em{color:var(--gold)}
 .journey-brand{font-family:var(--latin);font-weight:300;font-size:clamp(52px,10vw,132px);line-height:1;letter-spacing:.02em;color:var(--ink)}
 .journey-tag{margin-top:24px;font-family:var(--serif);font-size:17px;line-height:1.9;color:var(--muted)}
 .journey-head h2{margin-top:96px}
+.keep-phrase{display:inline-block;white-space:nowrap}
 .journey-intro{margin-top:40px;font-size:16px;line-height:2.1;color:var(--text)}
 
 .road{position:relative;list-style:none;max-width:900px;margin-inline:auto;padding-left:72px}
@@ -201,7 +202,8 @@ h2 em{color:var(--gold)}
 .mio-line{display:grid;grid-template-columns:340px 1fr;gap:112px;align-items:center;max-width:1000px;margin:180px auto 0}
 .line-shot{text-align:center}
 .line-label{margin-bottom:24px;font-size:13px;letter-spacing:.14em;color:var(--muted)}
-.line-shot img{width:100%;max-width:320px;margin-inline:auto;border:1px solid var(--line);border-radius:12px;background:var(--white)}
+.line-phone{width:100%;max-width:320px;aspect-ratio:750/1334;margin-inline:auto;padding:9px;border-radius:34px;background:#0f1b24;box-shadow:0 28px 56px rgba(13,29,42,.18);overflow:hidden}
+.line-phone img{width:100%;height:100%;object-fit:contain;border-radius:25px;background:var(--white)}
 .line-reflection{margin-top:24px;font-size:14px;line-height:2;color:var(--text)}
 .line-note{margin-top:6px;font-size:12px;color:var(--muted)}
 .everyday-flow{list-style:none}
@@ -231,8 +233,6 @@ h2 em{color:var(--gold)}
    Closing
    --------------------------------------------------------------------- */
 .closing{background:var(--paper)}
-.closing-photo{height:clamp(360px,56vw,760px)}
-.closing-photo img{width:100%;height:100%;object-fit:cover;object-position:center 70%}
 .closing-text{padding-block:140px 160px}
 .closing-text > *{max-width:620px;margin-inline:auto}
 .closing-eyebrow{font-size:13px;letter-spacing:.24em;color:var(--gold)}
@@ -302,9 +302,10 @@ h2 em{color:var(--gold)}
   .nav-wide{display:none}
   .nav-contact{font-size:13px;padding:7px 12px!important}
 
+  .hero{min-height:calc(100svh - var(--header-h));background:var(--paper)}
   .hero h1{margin-top:20px;font-size:clamp(30px,9.6vw,38px)}
   .hero-photo--desktop{display:none}
-  .hero-text{order:1;padding:48px var(--gutter) 88px}
+  .hero-text{order:1;min-height:calc(100svh - var(--header-h));padding:56px var(--gutter) 72px;display:flex;flex-direction:column;justify-content:center;background:linear-gradient(rgba(251,250,246,.74),rgba(251,250,246,.9)),url(assets/family.webp) 62% center/cover no-repeat}
   .hero-eyebrow{font-size:13px}
   .hero-lead{margin-top:28px;font-size:clamp(14px,4.6vw,15px);line-height:2}
   .hero-actions{flex-direction:column;align-items:stretch;gap:12px;margin-top:40px}
@@ -347,7 +348,8 @@ h2 em{color:var(--gold)}
   .mio-text .prose{margin-top:36px}
   .mio-principle{margin-top:44px;font-size:clamp(20px,5.8vw,22px)}
   .mio-line{margin-top:104px;gap:64px}
-  .line-shot img{max-width:280px}
+  .line-phone{max-width:260px;padding:8px;border-radius:30px}
+  .line-phone img{border-radius:22px}
   .everyday-flow li{padding:24px 0;font-size:18px}
   .everyday-summary{margin-top:32px;font-size:clamp(14px,4.6vw,15px)}
   .belief{margin-top:120px}
@@ -359,7 +361,6 @@ h2 em{color:var(--gold)}
   .future-words p{font-size:clamp(30px,9vw,36px)}
   .future-desc{margin-top:88px;font-size:14px}
 
-  .closing-photo{height:auto;aspect-ratio:4/3}
   .closing-text{padding-block:88px 96px}
   .closing-text .prose{margin-top:36px}
 
@@ -385,38 +386,4 @@ h2 em{color:var(--gold)}
   .btn .arw,.cta-bar{transition:none}
 }
 
-.hero-photo--mobile{
-  display:none;
-}
-
-@media (max-width:1024px){
-
-  .hero-photo--mobile{
-    display:none;
-  }
-}
-
-@media (max-width:640px){
-
-  .hero-photo--desktop{
-    display:none;
-  }
-
-  .hero-photo--mobile{
-    display:block;
-    margin-top:32px;
-    aspect-ratio:4/3;
-    overflow:hidden;
-  }
-
-  .hero-photo--mobile img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    object-position:62% center;
-  }
-
-  .hero-lead{
-    margin-top:32px;
-  }
-}
+.hero-photo--mobile{display:none}
