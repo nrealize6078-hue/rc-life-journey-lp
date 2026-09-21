@@ -123,8 +123,8 @@ h2 em{color:var(--gold)}
 /* ---------------------------------------------------------------------
    Hero
    --------------------------------------------------------------------- */
-.hero{display:grid;grid-template-columns:45fr 55fr;height:clamp(640px,calc(100vh - var(--header-h)),900px);background:var(--paper)}
-.hero-text{align-self:center;padding:80px 40px 96px max(var(--gutter),calc((100vw - var(--wrap))/2))}
+.hero{display:grid;grid-template-columns:minmax(0,45fr) minmax(0,55fr);min-height:clamp(640px,calc(100vh - var(--header-h)),900px);height:auto;align-items:stretch;overflow:hidden;background:var(--paper)}
+.hero-text{align-self:center;min-width:0;padding:80px 40px 96px max(var(--gutter),calc((100vw - var(--wrap))/2))}
 .hero-actions .btn{padding:15px 20px;gap:10px;font-size:14px}  /* PCで2つ横に並ぶ幅 */
 .hero-eyebrow{font-size:14px;letter-spacing:.18em;color:var(--muted);line-height:1.8}
 .hero h1{margin-top:28px;font-size:clamp(48px,4.6vw,66px);line-height:1.45}  /* 1行6字が左の列に収まる上限 */
@@ -134,8 +134,8 @@ h2 em{color:var(--gold)}
 .link-line{display:inline-flex;align-items:center;gap:8px;font-size:14px;letter-spacing:.06em;color:var(--muted);
   border-bottom:1px solid transparent;padding-bottom:2px}
 .link-line:hover{color:var(--ink);border-bottom-color:var(--line)}
-.hero-photo{position:relative;overflow:hidden}
-.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:62% center}
+.hero-photo{position:relative;min-width:0;min-height:clamp(640px,calc(100vh - var(--header-h)),900px);overflow:hidden}
+.hero-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% center}
 
 /* ---------------------------------------------------------------------
    Why
@@ -281,9 +281,9 @@ h2 em{color:var(--gold)}
    --------------------------------------------------------------------- */
 @media (max-width:1024px){
   :root{--gutter:32px}
-  .hero{grid-template-columns:1fr;height:auto}
+  .hero{grid-template-columns:1fr;min-height:0;height:auto}
   .hero-text{order:1;padding:56px var(--gutter) 96px}
-  .hero-photo{order:2;aspect-ratio:4/3}
+  .hero-photo{order:2;min-height:0;aspect-ratio:4/3}
   .why-grid,.belief,.mio-intro{grid-template-columns:1fr;gap:56px}
   .mio-line{grid-template-columns:1fr;gap:72px;max-width:620px}
   .step--shift{max-width:calc(520px + 12%);padding-left:12%}
