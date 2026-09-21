@@ -166,7 +166,11 @@ h2 em{color:var(--gold)}
 .journey{padding-block:160px 180px;background:var(--paper)}
 .journey-head{text-align:center;margin-bottom:140px}
 .journey-brand{font-family:var(--latin);font-weight:300;font-size:clamp(52px,10vw,132px);line-height:1;letter-spacing:.02em;color:var(--ink)}
-.journey-tag{margin-top:24px;font-family:var(--serif);font-size:17px;line-height:1.9;color:var(--muted)}
+.journey-tag{position:relative;display:inline-block;margin-top:34px;padding-top:24px;font-family:var(--serif);line-height:1.7;text-align:center}
+.journey-tag::before{content:"";position:absolute;top:0;left:50%;width:56px;height:1px;background:var(--gold);transform:translateX(-50%)}
+.journey-tag span,.journey-tag strong{display:block}
+.journey-tag span{font-size:clamp(20px,1.8vw,24px);font-weight:400;letter-spacing:.14em;color:var(--muted)}
+.journey-tag strong{margin-top:4px;font-family:inherit;font-size:clamp(28px,2.7vw,38px);font-weight:400;letter-spacing:.12em;color:var(--gold)}
 .journey-head h2{margin-top:96px}
 .keep-phrase{display:inline-block;white-space:nowrap}
 .journey-intro{margin-top:40px;font-size:16px;line-height:2.1;color:var(--text)}
@@ -327,7 +331,10 @@ h2 em{color:var(--gold)}
 
   .journey{padding-block:88px 104px}
   .journey-head{margin-bottom:88px}
-  .journey-tag{font-size:15px;margin-top:18px}
+  .journey-tag{margin-top:22px;padding-top:16px}
+  .journey-tag::before{width:40px}
+  .journey-tag span{font-size:15px;letter-spacing:.1em}
+  .journey-tag strong{font-size:20px;letter-spacing:.08em}
   .journey-head h2{margin-top:64px}
   .journey-intro{margin-top:28px;font-size:clamp(14px,4.6vw,15px);line-height:2}
   .road{padding-left:32px}
