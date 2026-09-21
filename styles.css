@@ -322,7 +322,7 @@ h2 em{color:var(--gold)}
   .axis-desc{margin-top:24px;font-size:14px}
 
   .question{padding:120px var(--gutter)}
-  .question-main{font-size:min(34px,calc((100vw - 40px) / 11.2))}
+  .question-main{font-size:min(34px,calc((100vw - 40px) / 11.8));letter-spacing:.04em}
   .question-sub{margin-top:28px;font-size:14px}
 
   .journey{padding-block:88px 104px}
